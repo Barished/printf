@@ -6,9 +6,9 @@
  */
 int _printf(const char *format, ...)
 {
-	int c, count = 0;
 	va_list args;
-	char *s;
+	int len = 0;
+	char c, *s;
 
 	va_start(args, format);
 	while (*format != '\0')
@@ -16,32 +16,33 @@ int _printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == 'c')
+			switch (*format)
+			{
+			case 'c':
 			{
 				c = va_arg(args, int);
-				putchar(c);
-				count++;
+				len += write(STDOUT_FILENO, &c, 1);
+				break;
 			}
-			else if (*format == 's')
+			case 's':
 			{
 				s = va_arg(args, char *);
-				while (*s != '\0')
-				{
-					putchar(*s);
-					s++;
-					count++;
-				}
+				len += write(STDOUT_FILENO, s, strlen(s));
+				break;
 			}
-			else if (*format == '%')
+			case '%':
 			{
-				putchar('%');
-				count++;
+				len += write(STDOUT_FILENO, "%", 1);
+				break;
+			}
+			default:
+				break;
 			}
 		}
-		putchar(*format);
-		count++;
+		len += write(STDOUT_FILENO, format, 1);
 		format++;
 	}
+
 	va_end(args);
-	return (count);
+	return (len);
 }
