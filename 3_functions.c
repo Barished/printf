@@ -7,6 +7,7 @@
  *
  * Return: num of characters printed
  */
+
 int print_char(va_list args)
 {
 	char c = va_arg(args, int);
@@ -20,6 +21,7 @@ int print_char(va_list args)
  * @args: Stores a list of characters
  * Return: num of parameters printed
  */
+
 int print_string(va_list args)
 {
 	int i, run = 0;
@@ -43,6 +45,7 @@ int print_string(va_list args)
  *
  * Return: always 1
  */
+
 int print_percent(__attribute__((unused))va_list args)
 {
 	char c = '%';
@@ -58,6 +61,7 @@ int print_percent(__attribute__((unused))va_list args)
  *
  * Return: number of chars and digits printed
  */
+
 int print_integer(va_list args)
 {
 	int a[10];
@@ -102,6 +106,7 @@ int print_integer(va_list args)
  *
  * Return: number of characters and digits printed
  */
+
 int print_decimal(va_list args)
 {
 	int a[10];
