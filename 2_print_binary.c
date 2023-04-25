@@ -13,11 +13,11 @@ int binary_recursive(unsigned int num, int lenght)
 {
 	if (num / 2)
 	{
-		len = binary_recursive(num / 2, len + 1);
+		lenght = binary_recursive(num / 2, lenght + 1);
 	}
 	_write(num % 2 + '0');
 
-	return (len);
+	return (lenght);
 }
 
 /**
