@@ -10,9 +10,9 @@
 
 char *_memcpy(char *dest, char *src, unsigned int n)
 {
-	int q;
+	unsigned int q;
 
-	for (q = 0; q < n; i++)
+	for (q = 0; q < n; q++)
 		dest[q] = src[q];
 
 	dest[q] = '\0';
@@ -35,7 +35,7 @@ char *rev_string(char *s)
 	char tmp;
 	char *dest;
 
-	for (len = 0; s[lent] != '\0'; len++)
+	for (lent = 0; s[lent] != '\0'; lent++)
 	{}
 
 	dest = malloc(sizeof(char) * lent + 1);
@@ -43,7 +43,7 @@ char *rev_string(char *s)
 	if (dest == NULL)
 		return (NULL);
 
-	_memcpy(dest, s, len);
+	_memcpy(dest, s, lent);
 	for (rev = 0; rev < lent; rev++, lent--)
 	{
 		tmp = dest[lent - 1];
