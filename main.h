@@ -1,5 +1,5 @@
-#ifndef _PRINTF_H_
-#define _PRINTF_H_
+#ifndef MAIN_H
+#define MAIN_H
 
 #define BUFSIZE 1024
 
@@ -46,4 +46,4 @@ char *rev_str(char *s);
 int print_reversed(va_list args);
 int (*func_t)(va_list);
 
-#endif /* _PRINTF_H_ */
+#endif /* _MAIN_H_ */
