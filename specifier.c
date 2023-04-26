@@ -25,6 +25,10 @@ int (*specifier(char c))(va_list)
 		return (print_octal);
 	else if (c == 'R')
 		return (print_reversed);
+	else if (c == 'x')
+		return (print_hex_lower);
+	else if (c == 'X')
+		return (print_hex_upper);
 	else
 		return (NULL);
 }

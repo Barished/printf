@@ -39,6 +39,8 @@ int print_decimal(va_list args);
 int binary_recursive(unsigned int num, int lenght);
 int print_binary(va_list count);
 int print_unint(va_list args);
+int print_hex_lower(va_list args);
+int print_hex_upper(va_list args);
 int print_octal(va_list args);
 int rot13(va_list args);
 char *_memcpy(char *dest, char *src, unsigned int n);
