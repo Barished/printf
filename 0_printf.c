@@ -2,10 +2,8 @@
 /**
  * _printf - A function that prints formatted output to the standard output
  * @format: types of argument passed to the function
- *
  *  Return: number of characters printed
  */
-
 int _printf(const char *format, ...)
 {
 	int output = 0, j;
@@ -15,18 +13,20 @@ int _printf(const char *format, ...)
 	va_start(count, format);
 
 	if (format == NULL)
+	{
 		return (-1);
-
+	}
 	for (j = 0; format[j]; j++)
 	{
 		if (format[j] == '%')
 		{
 			j++;
 			if (!(format[j]))
+			{
 				return (-1);
+			}
 
 			function = specifier(format[j]);
-
 			if (function == NULL)
 			{
 				_write('%');
@@ -34,7 +34,9 @@ int _printf(const char *format, ...)
 				output += 2;
 			}
 			else
+			{
 				output += function(count);
+			}
 		}
 		else
 		{
