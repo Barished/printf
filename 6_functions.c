@@ -1,50 +1,33 @@
 #include "main.h"
 
 /**
- * print_octal - A function that prints an octal number
- * @n: unsigned integer to print in octal
+ * print_octal - prints an unsigned integer as octal
+ * @args: va_list containing the unsigned integer to print
  *
- * Return: number of characters printed
+ * Return: number of digits printed
  */
-
-int print_octal(unsigned int n)
+int print_octal(va_list args)
 {
-	int count = 0;
-	char *octal = convert_base(n, 8);
+	unsigned int num = va_arg(args, unsigned int);
+	int i, count = 0;
+	int octal[100];
 
-	while (octal[count])
+	if (num == 0)
 	{
-		_write(octal[count]);
+		_write('0');
+		return (1);
+	}
+
+	while (num > 0)
+	{
+		octal[count] = num % 8;
+		num /= 8;
 		count++;
 	}
 
-	free(octal);
-	return (count);
-}
+	for (i = count - 1; i >= 0; i--)
+		_write(octal[i] + '0');
 
-/**
- * print_hexadecimal - A function that prints a hexadecimal number
- * @n: unsigned integer to print in hexadecimal
- * @uppercase: flag to indicate whether to print in uppercase
- *
- * Return: number of characters printed
- */
-
-int print_hexadecimal(unsigned int n, int uppercase)
-{
-	int count = 0;
-	char *hex = convert_base(n, 16);
-
-	if (uppercase)
-		hex = convert_to_uppercase(hex);
-
-	while (hex[count])
-	{
-		_write(hex[count]);
-		count++;
-	}
-
-	free(hex);
 	return (count);
 }
 
@@ -83,58 +66,4 @@ int rot13(va_list args)
 		}
 	}
 	return (count);
-}
-/**
- * convert_base - converts an unsigned int to a given base
- * @num: the number to convert
- * @base: the base to convert to
- *
- * Return: a pointer to a string containing the converted number
- */
-char *convert_base(unsigned int num, int base)
-{
-	char *str = malloc(sizeof(char) * 33);
-	char *digits = "0123456789abcdef";
-	int i = 0;
-
-	if (str == NULL)
-		return (NULL);
-
-	if (num == 0)
-	{
-		str[0] = '0';
-		str[1] = '\0';
-		return (str);
-	}
-
-	while (num != 0)
-	{
-		str[i++] = digits[num % base];
-		num /= base;
-	}
-
-	str[i] = '\0';
-
-	reverse_string(str);
-
-	return (str);
-}
-/**
- * convert_to_uppercase - Converts a string to all uppercase characters
- * @str: The string to convert
- *
- * Return: A pointer to the converted string
- */
-char *convert_to_uppercase(char *str)
-{
-	int i = 0;
-
-	while (str[i] != '\0')
-	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-			str[i] = str[i] - 32;
-		i++;
-	}
-
-	return (str);
 }
