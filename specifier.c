@@ -23,8 +23,6 @@ int (*specifier(char c))(va_list)
 		return (print_unint);
 	else if (c == 'o')
 		return (print_octal);
-	else if (c == 'r')
-		return (rot13);
 	else if (c == 'R')
 		return (print_reversed);
 	else
