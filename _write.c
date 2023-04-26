@@ -1,6 +1,6 @@
 #include <unistd.h>
 /**
- *write - writes a char to stdout
+ *_write - writes a char to stdout
  *@c: character
  *Return: the character
  */
